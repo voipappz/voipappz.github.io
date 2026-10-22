@@ -45,19 +45,12 @@
       /* Hero, phones: the whole square artwork, with the copy underneath it. */
       .hero-img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
       #top > div { position: static; padding: 1.5rem 1.25rem 3rem; }
-      /* Tablets: full-bleed crop, never stretched; the astronaut sits above the overlaid copy. */
-      @media (min-width: 640px) and (max-width: 1279px) {
-        .hero-img { height: clamp(600px, 86vh, 760px); aspect-ratio: auto; object-position: 50% 82%; }
+      /* Tablets and up: like the Base44 original, the artwork covers the full width (cropped, never
+         stretched) and the copy sits underneath the astronaut, on the yellow planet. The hero grows with
+         the width so the crop does not zoom in too far. */
+      @media (min-width: 640px) {
+        .hero-img { height: clamp(600px, 45vw, 860px); aspect-ratio: auto; object-position: 50% 80%; }
         #top > div { position: absolute; padding: 0 1.25rem; }
-      }
-      /* Wide screens: artwork covers the whole hero; the copy sits in a card over the plain pattern on the left. */
-      @media (min-width: 1280px) {
-        .hero-img { height: clamp(600px, 86vh, 760px); aspect-ratio: auto; object-position: 50% 44%; }
-        #top > div { position: absolute; top: 50%; bottom: auto; right: auto; transform: translateY(-50%);
-                     left: max(2rem, calc((100% - 1200px) / 2)); width: min(32rem, 34vw); padding: 2rem;
-                     text-align: left; background: #FFF8EC; border: 3px solid #000; border-radius: 1.5rem; box-shadow: 6px 6px 0 #000; }
-        #top > div h1 { margin-left: 0; margin-right: 0; max-width: none; font-size: clamp(2.5rem, 3vw, 3.25rem); }
-        #top > div p { margin-left: 0; margin-right: 0; max-width: none; font-size: 1.1rem; }
       }
     </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0TM7QEJ6W"></script>
