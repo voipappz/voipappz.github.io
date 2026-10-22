@@ -40,6 +40,16 @@
       /* Hero: full-width like the Base44 design; the square artwork is cropped, never stretched. */
       .hero-img { display: block; width: 100%; height: clamp(420px, 70vh, 760px); object-fit: cover; object-position: 50% 46%; }
       @media (min-width: 640px) { .hero-img { height: clamp(600px, 86vh, 760px); } }
+      /* Wide screens: a full-bleed crop of the square artwork zooms in too far and the headline
+         covers the astronaut, so switch to text left, whole picture right. */
+      @media (min-width: 1024px) {
+        #top { display: grid; grid-template-columns: 1fr minmax(0, 560px); align-items: center; gap: 4rem;
+               padding: 4rem max(2rem, calc((100% - 1200px) / 2)); }
+        #top > .hero-img { height: auto; max-height: none; aspect-ratio: 1 / 1; border: 3px solid #000; border-radius: 2rem; box-shadow: 6px 6px 0 #000; }
+        #top > div { position: static; order: -1; padding: 0; text-align: left; }
+        #top > div h1 { font-size: 4rem; max-width: none; margin-left: 0; }
+        #top > div p { font-size: 1.2rem; max-width: 34rem; margin-left: 0; }
+      }
     </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0TM7QEJ6W"></script>
     <script>
