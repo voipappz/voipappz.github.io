@@ -97,6 +97,10 @@
       const a = e.target.closest && e.target.closest('a[href]');
       if (!a) return;
       const href = a.getAttribute('href');
+      if (href.startsWith('tel:')) {
+        const section = a.closest('section[id], header, footer');
+        gtag('event', 'generate_lead', { method: 'phone', link_location: section ? (section.id || section.tagName.toLowerCase()) : 'page' });
+      }
       if (href.startsWith('mailto:')) {
         const subject = decodeURIComponent((href.split('subject=')[1] || '').split('&')[0]);
         const section = a.closest('section[id], header, footer');
