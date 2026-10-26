@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Install VoipAppz Builder on Windows — VoipAppz</title>
+    <meta name="description" content="Install VoipAppz Builder on Windows and make your first change: a desktop app that edits your VoipAppz admin and user screens through chat." />
+    <link rel="canonical" href="https://voipappz.com/builder-windows.html" />
+    <meta name="robots" content="index, follow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="theme-color" content="#FDAE98" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <link rel="stylesheet" href="/legal.css" />
+    <style>
+      /* Numbered steps and inline code, specific to the developer guides. */
+      main ol { padding-left: 1.25rem; }
+      main ol li { color: rgb(0 0 0 / .8); }
+      main ol li + li { margin-top: .35rem; }
+      code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .875em; background: #FFF56E; border: 1px solid rgb(0 0 0 / .25); border-radius: .3rem; padding: .05rem .35rem; word-break: break-word; }
+      .lede { font-size: 1.0625rem; }
+      .btn-download { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; margin: .5rem 0 1rem; padding: .75rem 1.5rem; background: #000; color: #fff; border-radius: 9999px; font-weight: 800; font-size: .8125rem; letter-spacing: .05em; text-transform: uppercase; text-decoration: none; transition: transform .15s; }
+      .btn-download:hover { transform: translateY(-2px); box-shadow: 4px 4px 0 0 #3CC39B; }
+    </style>
+    <script src="/consent.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header"><div class="bar"><a href="/" class="brand-oval" aria-label="VoipAppz home"><img src="/images/badge.svg" alt="" width="34" height="34" />VOIPAPPZ</a><a href="mailto:info@voipappz.com?subject=VoipAppz%20inquiry" class="btn-pill">Talk to us</a></div></header>
+    <main id="main">
+      <span class="eyebrow">VoipAppz Builder</span>
+      <h1>Install VoipAppz Builder on Windows and make your first change</h1>
+
+      <p class="lede"><strong>VoipAppz Builder</strong> is a desktop app for changing your VoipAppz admin and user screens through chat. You describe a change; a coding agent (Claude Code, on your own Claude account) edits a private copy of the VoipAppz React app on your computer, and the result shows in <strong>Admin</strong> and <strong>User</strong> previews next to the chat. Your own checkout is never touched.</p>
+      <p>Builder is a pre-release for developers. The installer is not code-signed yet and has no automatic updates.</p>
+
+      <a class="btn-download" href="https://github.com/voipappz/builder/releases" rel="noopener">Download from Builder releases</a>
+
+      <h2>Before you start</h2>
+      <ul>
+        <li>Windows 10 or 11, 64-bit, with internet access for the first run.</li>
+        <li>A Git checkout of the VoipAppz React app (<code>voipappz/app</code>) on this computer. Builder makes its own worktree next to it, named <code>&lt;app folder&gt;-builder</code>, on the branch <code>builder/work</code>.</li>
+        <li><a href="https://docs.anthropic.com/en/docs/claude-code" rel="noopener">Claude Code</a> installed and signed in on this computer (run <code>claude</code> once in a terminal). The agent runs on your Claude account.</li>
+        <li>A VoipAppz account on <code>https://switch.voipappz.io</code> to sign in to the previews. Node.js is not required: Builder installs the version the app needs.</li>
+      </ul>
+
+      <h2>Install</h2>
+      <ol>
+        <li>Download <strong>VoipAppz.Builder_0.1.2_x64-setup.exe</strong> from the <a href="https://github.com/voipappz/builder/releases" rel="noopener">Builder releases</a> page.</li>
+        <li>Run it. If Windows shows <strong>Windows protected your PC</strong>, select <strong>More info</strong>, then <strong>Run anyway</strong>: the installer is not signed yet.</li>
+        <li>Start <strong>VoipAppz Builder</strong> from the Start menu. It runs from the system tray and opens a setup window.</li>
+      </ol>
+
+      <h2>First start</h2>
+      <ol>
+        <li>Under <strong>React app</strong>, choose the folder of your <code>voipappz/app</code> Git checkout.</li>
+        <li>Leave the <strong>API address</strong> as <code>https://switch.voipappz.io</code>, or enter another HTTPS address.</li>
+        <li>Optional: enter your API email and password so the agent gets read-only platform tools (extensions, numbers, call logs). Leave both empty to skip; you can still sign in to the previews.</li>
+        <li>Select <strong>Check</strong>. You should see <strong>API is reachable</strong>.</li>
+        <li>Select <strong>Start</strong>. The window shows each step: installing Node, installing the app's packages, starting the app, starting the agent. The first run can take several minutes; later starts are quick.</li>
+        <li>When setup finishes, your browser opens the Builder page: chat on one side, Admin and User previews on the other. Sign in to each preview with your VoipAppz account.</li>
+      </ol>
+
+      <h2>Make your first change</h2>
+      <ol>
+        <li>In the chat, describe the change, for example: <em>Add a search field above the extensions table.</em></li>
+        <li>The agent reads the app's source and edits it. Edits inside the Builder worktree are applied without asking; a command the agent wants to run (for example a test) asks for your permission first.</li>
+        <li>The previews reload on their own. Check the Admin preview, then ask for a refinement or say what to undo.</li>
+        <li>Your changes are files in the Builder worktree, on its <code>builder/work</code> branch. Review them with Git, then commit and push or merge them as you would any branch.</li>
+      </ol>
+
+      <h2>What Builder can and cannot do</h2>
+      <ul>
+        <li>It edits only the React app in its own worktree. It cannot write outside that folder, inside <code>.git</code>, or through links that lead out.</li>
+        <li>The platform API is read-only for the agent: it can list extensions, numbers and calls, but not create, change or delete them. Make those changes in the admin portal.</li>
+        <li>Deploying the changed app to your live environment is not part of Builder yet.</li>
+      </ul>
+
+      <h2>Where things are</h2>
+      <ul>
+        <li>Settings: <code>%APPDATA%\voipappz-builder\builder.toml</code>.</li>
+        <li>Logs: <code>%LOCALAPPDATA%\voipappz-builder\builder.log</code> and <code>app.log</code> (the app's dev server).</li>
+        <li>Tray menu: <strong>Open VoipAppz Builder</strong>, <strong>Connect App and API…</strong>, <strong>Settings</strong>, <strong>View Logs</strong>, <strong>Restart</strong>, <strong>Quit VoipAppz Builder</strong>. Closing the setup window leaves Builder running in the tray.</li>
+      </ul>
+
+      <h2>If it doesn't work</h2>
+      <ul>
+        <li>“Use an HTTPS API address” means the API address is not <code>https://</code>. Only localhost may use plain <code>http://</code>.</li>
+        <li>“Could not reach the API” means the address does not answer. Check it in a browser and check your internet connection.</li>
+        <li>Setup stops with an error: the window keeps the details and the log location. Select <strong>Copy details</strong> and send them with your support ticket.</li>
+        <li>The chat does not answer: make sure Claude Code is signed in (<code>claude</code> in a terminal) and that your Claude account has quota left.</li>
+        <li>The previews are empty: another program may be using port 3000. Stop it and restart Builder from the tray.</li>
+      </ul>
+    </main>
+    <footer class="site-footer">
+      <nav aria-label="Help and legal"><a href="/">Home</a><a href="https://voipappz.zendesk.com/hc/en-us" rel="noopener">Help center</a><a href="https://voipappz.zendesk.com/hc/en-us/requests/new" rel="noopener">Open a ticket</a><a href="/privacy.html">Privacy policy</a><a href="/terms.html">Terms of use</a><a href="/accessibility.html">Accessibility</a><a href="#" data-cookie-settings>Cookie settings</a></nav>
+      <p>© 2026 VoipAppz · <a href="mailto:info@voipappz.com">info@voipappz.com</a> · <a href="tel:+97233723999">+972-3-372-3999</a></p>
+    </footer>
+  </body>
+</html>
